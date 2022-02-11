@@ -67,4 +67,41 @@ public class Main {
 					}
 					System.out.println();
 					break;
-					
+				case 3:
+					System.out.println("VENTA DE LIBROS.-");
+					System.out.println();
+					System.out.println("Libros disponibles.-");
+					inventario.verLibreria();
+					System.out.println();
+					System.out.println("Ingrese ISBN del libro que desee comprar:");
+					isbn = sc.next();
+					Libro resul = inventario.getLibrobyIsbn(isbn);
+					if(resul != null) {
+						System.out.println("¿Cuantós desea comprar?");
+						cantidad = sc.nextInt();
+						inventario.ventaLibro(resul, cantidad);
+						System.out.println();
+						System.out.println("Compra concretada éxitosamente!");
+					}else {
+						System.out.println("ERROR! No se encontro el libro con el ISBN "+ isbn + " por ende no se realizo la compra.");
+						System.out.println("Lo sientimos. :(");
+					}
+					System.out.println();
+					break;
+				case 4:
+					inventario.verLibreria();
+					System.out.println();
+					break;
+				case 5:
+					System.out.println("TOP 3 MÁS CAROS.-");
+					Collections.sort(libros);
+					for (int i=0; i <3;i++ ) { 
+						System.out.println(libros.get(i)); 
+					}
+					System.out.println();
+					break;
+			}
+		}
+		sc.close();	
+	}
+}
